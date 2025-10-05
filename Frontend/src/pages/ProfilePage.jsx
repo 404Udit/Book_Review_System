@@ -13,7 +13,7 @@ export default function ProfilePage() {
   }, []);
 
   useEffect(() => {
-    if (!user) return; // wait until user is loaded
+    if (!user) return; 
     async function fetchBooks() {
       const data = await getMyBooks(user._id);
       setBooks(data);

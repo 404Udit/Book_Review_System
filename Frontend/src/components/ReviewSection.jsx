@@ -8,10 +8,8 @@ export default function ReviewSection({ bookId }) {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
-    // Calculate average rating
     const avgRating = reviews.length > 0 ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1) : 0;
 
-    // Fetch reviews when component mounts
     useEffect(() => {
         async function fetchReviews() {
             const data = await getBookReviews(bookId);
@@ -20,7 +18,7 @@ export default function ReviewSection({ bookId }) {
         fetchReviews();
     }, [bookId]);
 
-    // Handle review submission
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         

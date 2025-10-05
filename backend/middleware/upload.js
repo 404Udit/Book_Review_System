@@ -5,9 +5,9 @@ import cloudinary from "../config/cloudinary.js";
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "book_pdfs",         // Cloudinary folder name
-    resource_type: "raw",        // raw = for non-image files (like PDFs)
-    allowed_formats: ["pdf"],    // restrict to PDFs
+    folder: "book_pdfs",        
+    resource_type: "raw",       
+    allowed_formats: ["pdf"],    
   },
 });
 

@@ -21,7 +21,7 @@ export const loginUser = async (formData) => {
   return res.json();
 };
 
-// Get current user (protected)
+// Getting user protected
 export const getMe = async () => {
   const token = localStorage.getItem("token");
   const res = await fetch(`${API_BASE}/auth/me`, {
@@ -36,9 +36,9 @@ export const addBook = async (formData) => {
   const res = await fetch(`${API_BASE}/auth/addbook`, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`, // 👈 send token
+      Authorization: `Bearer ${token}`, 
     },
-    body: formData, // FormData (not JSON)
+    body: formData, 
   });
   return res.json();
 };
@@ -58,18 +58,18 @@ export const getBookById = async (id) => {
 //add book review
 export const addBookReview = async (bookId, reviewData) => {
   try {
-    const token = localStorage.getItem("token"); // Ensure user is logged in
+    const token = localStorage.getItem("token"); 
     const res = await fetch(`${API_BASE}/auth/reviews/${bookId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // send JWT token for auth
+        Authorization: `Bearer ${token}`, 
       },
       body: JSON.stringify(reviewData),
     });
 
 
-    return await res.json(); // Returns the created review
+    return await res.json(); 
   } catch (error) {
     console.error(error);
     return null;

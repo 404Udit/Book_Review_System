@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Review from "../models/Review.js";
 
-// Generate JWT
+// Generating JWT tokens
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
@@ -55,7 +55,7 @@ export const login = async (req, res) => {
   }
 };
 
-//Add Book
+//add book
 export const addbook = async (req, res) => {
   try {
     const { title, author, description, genre, year } = req.body;
@@ -70,8 +70,8 @@ export const addbook = async (req, res) => {
     if (!pdfUrl) {
       return res.status(400).json({ message: "PDF upload failed" });
     }
-    console.log("Text fields:", req.body);  // title, author, etc.
-    console.log("Uploaded file:", req.file); // file info like path, filename
+    console.log("Text fields:", req.body);  
+    console.log("Uploaded file:", req.file); 
     const book = await Book.create({ title, author, description, genre, year, pdfUrl, addedBy: req.user.id, Avg_Rating });
 
 
@@ -81,6 +81,7 @@ export const addbook = async (req, res) => {
   }
 };
 
+//add review
 export const addreview = async (req, res) => {
   try {
     const { rating, comment } = req.body;
@@ -96,7 +97,7 @@ export const addreview = async (req, res) => {
     const reviews = await Review.find({ book: bookID });
     const Avg_Rating = reviews.length > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0;
 
-    // ✅ Update book document
+
     await Book.findByIdAndUpdate({ _id: bookID }, {
       Avg_Rating,
     });

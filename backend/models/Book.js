@@ -31,7 +31,7 @@ const bookSchema = new mongoose.Schema(
 
     addedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // reference to the user who added the book
+      ref: "User", 
       required: true,
     },
 
@@ -41,7 +41,7 @@ const bookSchema = new mongoose.Schema(
     createdAt: { type: Date, default: Date.now },
   },
   {
-    timestamps: true, // automatically adds createdAt & updatedAt
+    timestamps: true,
   }
 );
 

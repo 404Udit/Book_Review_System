@@ -13,7 +13,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/addbook",protect, upload.single("pdf"), addbook);
 router.get("/me", protect, (req, res) => {
-  res.json(req.user); // get current user details
+  res.json(req.user); 
 });
 
 router.get("/all", async (req, res) => {
@@ -27,14 +27,14 @@ router.get("/all", async (req, res) => {
 
 router.get("/books/:id", async (req, res) => {
   try {
-    const { id } = req.params;           // ✅ get id from URL
-    const book = await Book.findById(id); // ✅ find book by id
+    const { id } = req.params;           
+    const book = await Book.findById(id); 
 
     if (!book) {
       return res.status(404).json({ message: "Book not found" });
     }
 
-    res.json(book);                      // ✅ send book as JSON
+    res.json(book);                   
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -4,7 +4,7 @@ import { getBookById } from "../utils/api";
 import ReviewSection from "../components/ReviewSection";
 
 export default function BookDetailsPage() {
-  const { id } = useParams(); // get book id from URL
+  const { id } = useParams(); 
   const [book, setBook] = useState(null);
 
   useEffect(() => {
